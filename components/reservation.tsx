@@ -81,7 +81,7 @@ export function Reservation() {
     <section
       ref={sectionRef}
       id="reservation"
-      className="relative overflow-hidden py-28 lg:py-40"
+      className="relative overflow-hidden py-20 lg:py-40"
     >
       {/* Background */}
       <div
@@ -96,7 +96,7 @@ export function Reservation() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
           {/* Left text */}
           <div ref={leftRef} className="flex flex-col gap-5">

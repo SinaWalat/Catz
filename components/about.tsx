@@ -90,16 +90,16 @@ export function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-28 lg:py-40"
+      className="relative py-20 lg:py-40"
     >
       {/* Decorative background element */}
       <div className="absolute right-0 top-1/4 h-64 w-64 rounded-full bg-primary/5 blur-[100px]" />
       <div className="absolute left-0 bottom-1/4 h-48 w-48 rounded-full bg-accent/5 blur-[80px]" />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-10 sm:gap-16 lg:grid-cols-2 lg:gap-24">
           {/* Image */}
-          <div ref={imageRef} className="img-zoom relative aspect-[3/4] overflow-hidden">
+          <div ref={imageRef} className="img-zoom relative aspect-[4/3] sm:aspect-[3/4] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=2069&auto=format&fit=crop"
               alt="Elegant cocktail being prepared at the Catz bar"
@@ -118,7 +118,7 @@ export function About() {
             <p data-reveal className="text-[11px] uppercase tracking-[0.4em] text-primary">
               Our Story
             </p>
-            <h2 data-reveal className="text-balance font-serif text-3xl font-bold leading-tight text-foreground md:text-4xl lg:text-5xl">
+            <h2 data-reveal className="text-balance font-serif text-2xl font-bold leading-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
               Where Every Night Becomes a Memory
             </h2>
             <div data-reveal className="h-px w-12 bg-primary" />

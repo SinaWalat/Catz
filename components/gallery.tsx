@@ -117,17 +117,17 @@ export function Gallery() {
 
   return (
     <>
-      <section ref={sectionRef} id="gallery" className="relative py-28 lg:py-40 overflow-hidden">
+      <section ref={sectionRef} id="gallery" className="relative py-20 lg:py-40 overflow-hidden">
         {/* Decorative */}
         <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-primary/5 blur-[100px]" />
 
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div ref={headerRef} className="mb-20 flex flex-col items-center gap-4 text-center">
-            <p data-reveal className="text-[11px] uppercase tracking-[0.4em] text-primary">
+          <div ref={headerRef} className="mb-12 sm:mb-20 flex flex-col items-center gap-3 sm:gap-4 text-center">
+            <p data-reveal className="text-[10px] sm:text-[11px] uppercase tracking-[0.4em] text-primary">
               The Atmosphere
             </p>
-            <h2 data-reveal className="font-serif text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
+            <h2 data-reveal className="font-serif text-2xl font-bold text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
               Gallery
             </h2>
             <div data-reveal className="h-px w-12 bg-primary" />

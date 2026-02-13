@@ -103,7 +103,7 @@ export function Events() {
     <section
       ref={sectionRef}
       id="events"
-      className="relative overflow-hidden py-28 lg:py-40"
+      className="relative overflow-hidden py-20 lg:py-40"
       style={{ backgroundColor: '#0a0a0a' }}
     >
       {/* Subtle radial glow */}
@@ -112,23 +112,23 @@ export function Events() {
         style={{ background: 'radial-gradient(circle, rgba(145,98,78,0.4) 0%, transparent 70%)' }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div ref={headerRef} className="mb-20 flex flex-col items-center gap-4 text-center">
-          <p data-reveal className="text-[11px] uppercase tracking-[0.4em]" style={{ color: '#91624e' }}>
+        <div ref={headerRef} className="mb-12 sm:mb-20 flex flex-col items-center gap-3 sm:gap-4 text-center">
+          <p data-reveal className="text-[10px] sm:text-[11px] uppercase tracking-[0.4em]" style={{ color: '#91624e' }}>
             {"What's On"}
           </p>
-          <h2 data-reveal className="font-serif text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          <h2 data-reveal className="font-serif text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
             Weekly Nights
           </h2>
           <div data-reveal className="h-px w-12" style={{ backgroundColor: '#91624e' }} />
-          <p data-reveal className="max-w-md text-sm" style={{ color: '#fff9' }}>
+          <p data-reveal className="max-w-md text-xs sm:text-sm" style={{ color: '#fff9' }}>
             Every night at Catz tells a different story. Find your rhythm.
           </p>
         </div>
 
         {/* Cards */}
-        <div ref={cardsRef} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={cardsRef} className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
           {events.map((event) => (
             <div
               key={event.title}
@@ -136,7 +136,7 @@ export function Events() {
               style={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-32 sm:h-48 overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={event.image}
@@ -147,7 +147,7 @@ export function Events() {
                 {/* Day badge */}
                 <div className="absolute bottom-4 left-5">
                   <span
-                    className="font-serif text-3xl font-bold tracking-tight text-white"
+                    className="font-serif text-xl sm:text-3xl font-bold tracking-tight text-white"
                     style={{ textShadow: '0 2px 12px rgba(0,0,0,0.5)' }}
                   >
                     {event.day}
@@ -155,24 +155,24 @@ export function Events() {
                 </div>
                 {/* Icon */}
                 <div
-                  className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 backdrop-blur-md transition-all duration-500 group-hover:border-white/20"
+                  className="absolute right-3 top-3 sm:right-4 sm:top-4 flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-white/10 backdrop-blur-md transition-all duration-500 group-hover:border-white/20"
                   style={{ backgroundColor: 'rgba(145,98,78,0.15)' }}
                 >
-                  <event.icon className="h-4 w-4 text-white/60 transition-colors duration-500 group-hover:text-white" />
+                  <event.icon className="h-3 w-3 sm:h-4 sm:w-4 text-white/60 transition-colors duration-500 group-hover:text-white" />
                 </div>
               </div>
 
               {/* Content */}
-              <div className="flex flex-1 flex-col gap-3 p-5 pt-4">
-                <h3 className="font-serif text-lg font-semibold text-white transition-colors duration-500 group-hover:text-[#c9a18a]">
+              <div className="flex flex-1 flex-col gap-2 sm:gap-3 p-3 sm:p-5 pt-3 sm:pt-4">
+                <h3 className="font-serif text-sm sm:text-lg font-semibold text-white transition-colors duration-500 group-hover:text-[#c9a18a]">
                   {event.title}
                 </h3>
-                <p className="flex-1 text-[13px] leading-relaxed text-white/35">
+                <p className="flex-1 text-[11px] sm:text-[13px] leading-relaxed text-white/35 line-clamp-3 sm:line-clamp-none">
                   {event.description}
                 </p>
-                <div className="mt-auto flex items-center gap-2 border-t border-white/[0.06] pt-3">
+                <div className="mt-auto flex items-center gap-2 border-t border-white/[0.06] pt-2 sm:pt-3">
                   <div className="h-1 w-1 rounded-full" style={{ backgroundColor: '#91624e' }} />
-                  <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: '#91624e' }}>
+                  <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.3em]" style={{ color: '#91624e' }}>
                     {event.time}
                   </span>
                 </div>

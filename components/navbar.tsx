@@ -111,7 +111,8 @@ export function Navbar() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="relative z-50 text-foreground transition-transform duration-300 md:hidden"
+          className="relative z-50 transition-transform duration-300 md:hidden"
+          style={{ color: '#91624e' }}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
           <div className="flex h-3 w-8 flex-col justify-between">

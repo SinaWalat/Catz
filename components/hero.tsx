@@ -135,7 +135,7 @@ export function Hero() {
         <a
           href="#reservation"
           data-hero
-          className="magnetic-btn mt-6 inline-flex items-center px-12 py-4 text-[10px] uppercase tracking-[0.3em]"
+          className="magnetic-btn mt-6 inline-flex items-center px-8 py-3 sm:px-12 sm:py-4 text-[9px] sm:text-[10px] uppercase tracking-[0.3em]"
         >
           <span>Reserve Your Table</span>
         </a>

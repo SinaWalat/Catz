@@ -269,23 +269,46 @@ export function MenuHighlights() {
 
       {/* Mobile layout */}
       <div className="md:hidden">
-        <div className="px-6 pb-10">
-          <div className="flex flex-col items-center gap-4 text-center">
+        <div className="px-4 pb-8">
+          <div className="flex flex-col items-center gap-3 text-center">
             <div data-menu-title className="h-px w-12 bg-primary" />
-            <p data-menu-title className="text-[11px] uppercase tracking-[0.4em] text-primary">
+            <p data-menu-title className="text-[10px] uppercase tracking-[0.4em] text-primary">
               Our Menu
             </p>
-            <h2 data-menu-title className="font-serif text-3xl font-bold">
+            <h2 data-menu-title className="font-serif text-2xl font-bold">
               A Taste of What Awaits
             </h2>
-            <p data-menu-title className="max-w-md text-sm text-foreground/40">
+            <p data-menu-title className="max-w-md text-xs text-foreground/40">
               Crafted with precision and passion.
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-3 px-6">
-          {[...topRow.slice(0, 4), ...bottomRow.slice(0, 4)].map((item) => (
-            <MenuCard key={item.title} item={item} />
+        <div className="grid grid-cols-2 gap-3 px-4">
+          {[...topRow.slice(0, 4), ...bottomRow.slice(0, 2)].map((item) => (
+            <div key={item.title} className="menu-card glow-border group relative overflow-hidden rounded-lg" style={{ backgroundColor: '#91624e' }}>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <span className="absolute left-2 top-2 bg-black/50 px-1.5 py-0.5 text-[7px] uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm">
+                  {item.category}
+                </span>
+              </div>
+              <div className="flex flex-col gap-1 p-2.5">
+                <div className="flex items-center justify-between gap-1">
+                  <h3 className="font-serif text-xs font-semibold text-white line-clamp-1">
+                    {item.title}
+                  </h3>
+                  <span className="flex-shrink-0 text-[9px] text-white/60">
+                    {item.price}
+                  </span>
+                </div>
+                <p className="line-clamp-2 text-[10px] leading-relaxed text-white/70">{item.description}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
