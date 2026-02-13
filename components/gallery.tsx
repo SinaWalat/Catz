@@ -11,32 +11,26 @@ const images = [
   {
     src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
     alt: "Catz restaurant interior with warm ambient lighting",
-    span: "col-span-2 row-span-2",
   },
   {
     src: "https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=2070&auto=format&fit=crop",
     alt: "Signature cocktail with artistic garnish",
-    span: "col-span-1 row-span-1",
   },
   {
     src: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2074&auto=format&fit=crop",
     alt: "Stylish bar area at Catz with moody lighting",
-    span: "col-span-1 row-span-1",
   },
   {
     src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop",
     alt: "Beautifully plated gourmet dish",
-    span: "col-span-1 row-span-1",
   },
   {
     src: "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=2074&auto=format&fit=crop",
     alt: "Vibrant nightlife atmosphere at the bar",
-    span: "col-span-1 row-span-2",
   },
   {
     src: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=2074&auto=format&fit=crop",
     alt: "Friends enjoying cocktails and conversation",
-    span: "col-span-1 row-span-1",
   },
 ]
 
@@ -116,20 +110,6 @@ export function Gallery() {
           delay: (i % 3) * 0.1,
         })
       })
-
-      // Parallax depth for some items
-      items.forEach((item, i) => {
-        gsap.to(item, {
-          y: (i % 2 === 0 ? -20 : -40),
-          ease: "none",
-          scrollTrigger: {
-            trigger: item,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        })
-      })
     }, section)
 
     return () => ctx.revert()
@@ -153,29 +133,54 @@ export function Gallery() {
             <div data-reveal className="h-px w-12 bg-primary" />
           </div>
 
-          {/* Grid */}
+          {/* Bento Grid - Desktop */}
           <div
             ref={gridRef}
-            className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4"
+            className="hidden md:grid grid-cols-4 grid-rows-[280px_280px] gap-4"
           >
+            {/* A — wide top-left */}
+            <button onClick={() => setLightbox(0)} className="gallery-item img-zoom group relative col-span-2 row-span-1 overflow-hidden rounded-lg" aria-label={`View ${images[0].alt}`}>
+              <img src={images[0].src} alt={images[0].alt} className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-all duration-700 group-hover:from-black/80" />
+              <div className="absolute inset-0 flex items-center justify-center"><span className="translate-y-4 border border-white/40 px-5 py-2.5 text-[10px] uppercase tracking-[0.3em] text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 rounded-lg backdrop-blur-sm">View</span></div>
+            </button>
+            {/* B — top-middle */}
+            <button onClick={() => setLightbox(1)} className="gallery-item img-zoom group relative col-span-1 row-span-1 overflow-hidden rounded-lg" aria-label={`View ${images[1].alt}`}>
+              <img src={images[1].src} alt={images[1].alt} className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-all duration-700 group-hover:from-black/80" />
+              <div className="absolute inset-0 flex items-center justify-center"><span className="translate-y-4 border border-white/40 px-5 py-2.5 text-[10px] uppercase tracking-[0.3em] text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 rounded-lg backdrop-blur-sm">View</span></div>
+            </button>
+            {/* C — tall right */}
+            <button onClick={() => setLightbox(2)} className="gallery-item img-zoom group relative col-span-1 row-span-2 overflow-hidden rounded-lg" aria-label={`View ${images[2].alt}`}>
+              <img src={images[2].src} alt={images[2].alt} className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-all duration-700 group-hover:from-black/80" />
+              <div className="absolute inset-0 flex items-center justify-center"><span className="translate-y-4 border border-white/40 px-5 py-2.5 text-[10px] uppercase tracking-[0.3em] text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 rounded-lg backdrop-blur-sm">View</span></div>
+            </button>
+            {/* D — bottom-left */}
+            <button onClick={() => setLightbox(3)} className="gallery-item img-zoom group relative col-span-1 row-span-1 overflow-hidden rounded-lg" aria-label={`View ${images[3].alt}`}>
+              <img src={images[3].src} alt={images[3].alt} className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-all duration-700 group-hover:from-black/80" />
+              <div className="absolute inset-0 flex items-center justify-center"><span className="translate-y-4 border border-white/40 px-5 py-2.5 text-[10px] uppercase tracking-[0.3em] text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 rounded-lg backdrop-blur-sm">View</span></div>
+            </button>
+            {/* E — wide bottom-middle */}
+            <button onClick={() => setLightbox(4)} className="gallery-item img-zoom group relative col-span-2 row-span-1 overflow-hidden rounded-lg" aria-label={`View ${images[4].alt}`}>
+              <img src={images[4].src} alt={images[4].alt} className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-all duration-700 group-hover:from-black/80" />
+              <div className="absolute inset-0 flex items-center justify-center"><span className="translate-y-4 border border-white/40 px-5 py-2.5 text-[10px] uppercase tracking-[0.3em] text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 rounded-lg backdrop-blur-sm">View</span></div>
+            </button>
+          </div>
+
+          {/* Mobile Grid */}
+          <div className="grid grid-cols-2 gap-3 md:hidden">
             {images.map((img, i) => (
               <button
                 key={img.src}
                 onClick={() => setLightbox(i)}
-                className={`gallery-item img-zoom group relative overflow-hidden rounded-lg ${img.span}`}
+                className="gallery-item img-zoom group relative aspect-[4/3] overflow-hidden rounded-lg"
                 aria-label={`View ${img.alt}`}
               >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-background/0 to-background/0 transition-all duration-700 group-hover:from-background/70" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="translate-y-4 border border-primary/60 px-5 py-2.5 text-[10px] uppercase tracking-[0.3em] text-primary opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 rounded">
-                    View
-                  </span>
-                </div>
+                <img src={img.src} alt={img.alt} className="h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-all duration-700 group-hover:from-black/80" />
               </button>
             ))}
           </div>

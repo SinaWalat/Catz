@@ -116,15 +116,15 @@ function MenuCard({
   item: { title: string; category: string; price: string; image: string; description: string }
 }) {
   return (
-    <div className="menu-card glow-border group relative flex-shrink-0 w-full md:w-[320px] overflow-hidden rounded-sm bg-card">
+    <div className="menu-card glow-border group relative flex-shrink-0 w-[280px] md:w-[320px] overflow-hidden rounded-lg" style={{ backgroundColor: '#91624e' }}>
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={item.image}
           alt={item.title}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-        <span className="absolute left-2 top-2 bg-background/70 px-1.5 py-0.5 text-[7px] uppercase tracking-[0.2em] text-primary backdrop-blur-sm md:left-3 md:top-3 md:px-2.5 md:py-1 md:text-[9px] md:tracking-[0.3em]">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <span className="absolute left-2 top-2 bg-black/50 px-1.5 py-0.5 text-[7px] uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm md:left-3 md:top-3 md:px-2.5 md:py-1 md:text-[9px] md:tracking-[0.3em]">
           {item.category}
         </span>
         <span className="absolute bottom-3 right-3 translate-y-2 bg-primary px-2.5 py-1 text-xs font-semibold text-primary-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -133,14 +133,14 @@ function MenuCard({
       </div>
       <div className="flex flex-col gap-1 p-2.5 md:gap-1.5 md:p-4">
         <div className="flex items-center justify-between gap-2">
-          <h3 className="font-serif text-sm font-semibold text-foreground transition-colors duration-300 group-hover:text-primary md:text-base">
+          <h3 className="font-serif text-sm font-semibold text-white transition-colors duration-300 group-hover:text-white/80 md:text-base">
             {item.title}
           </h3>
-          <span className="flex-shrink-0 text-[10px] text-foreground/30 md:text-xs">
+          <span className="flex-shrink-0 text-[10px] text-white/60 md:text-xs">
             {item.price}
           </span>
         </div>
-        <p className="line-clamp-2 text-[11px] leading-relaxed text-foreground/40 md:text-[12px]">{item.description}</p>
+        <p className="line-clamp-2 text-[11px] leading-relaxed text-white/70 md:text-[12px]">{item.description}</p>
       </div>
     </div>
   )
@@ -174,33 +174,35 @@ export function MenuHighlights() {
       const mm = gsap.matchMedia()
 
       mm.add("(min-width: 768px)", () => {
-        // Top row scrolls LEFT on scroll down
-        const topScrollDist = topTrack.scrollWidth - window.innerWidth + 100
+        // Calculate one full set width (cards + gaps)
+        const cardWidth = 320
+        const gap = 20
+        const topSetWidth = topRow.length * (cardWidth + gap)
+        const bottomSetWidth = bottomRow.length * (cardWidth + gap)
 
+        // Top row: scroll left by exactly one full set
         gsap.to(topTrack, {
-          x: -topScrollDist,
+          x: -topSetWidth,
           ease: "none",
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: () => `+=${topScrollDist * 1.2}`,
+            end: () => `+=${topSetWidth * 1.5}`,
             pin: true,
             scrub: 1,
             invalidateOnRefresh: true,
           },
         })
 
-        // Bottom row scrolls RIGHT (starts offset left, moves to 0)
-        const bottomScrollDist = bottomTrack.scrollWidth - window.innerWidth + 100
-        gsap.set(bottomTrack, { x: -bottomScrollDist })
-
+        // Bottom row: scroll right by exactly one full set
+        gsap.set(bottomTrack, { x: -bottomSetWidth })
         gsap.to(bottomTrack, {
           x: 0,
           ease: "none",
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: () => `+=${bottomScrollDist * 1.2}`,
+            end: () => `+=${bottomSetWidth * 1.5}`,
             scrub: 1,
             invalidateOnRefresh: true,
           },
@@ -250,17 +252,17 @@ export function MenuHighlights() {
           </div>
         </div>
 
-        {/* Top row → scrolls left */}
+        {/* Top row → seamless marquee scrolling left (3x duplication) */}
         <div ref={topTrackRef} className="flex gap-5 pb-4 will-change-transform">
-          {topRow.map((item) => (
-            <MenuCard key={item.title} item={item} />
+          {[...topRow, ...topRow, ...topRow].map((item, i) => (
+            <MenuCard key={`top-${i}`} item={item} />
           ))}
         </div>
 
-        {/* Bottom row → scrolls right */}
+        {/* Bottom row → seamless marquee scrolling right (3x duplication) */}
         <div ref={bottomTrackRef} className="flex gap-5 pt-4 will-change-transform">
-          {bottomRow.map((item) => (
-            <MenuCard key={item.title} item={item} />
+          {[...bottomRow, ...bottomRow, ...bottomRow].map((item, i) => (
+            <MenuCard key={`bottom-${i}`} item={item} />
           ))}
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { ChevronDown } from "lucide-react"
+import Image from "next/image"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -96,7 +97,7 @@ export function Hero() {
       {/* Dark curtain overlay */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 z-20 bg-background origin-top"
+        className="absolute inset-0 z-20 bg-black origin-top"
       />
 
       {/* Background image */}
@@ -108,7 +109,7 @@ export function Hero() {
             "url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=2574&auto=format&fit=crop')",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black" />
       </div>
 
       {/* Content */}
@@ -123,12 +124,9 @@ export function Hero() {
           Restaurant & Bar
         </p>
 
-        <h1
-          data-hero
-          className="font-serif text-7xl font-bold leading-none tracking-[0.2em] text-foreground md:text-9xl lg:text-[10rem]"
-        >
-          CATZ
-        </h1>
+        <div data-hero className="flex items-center justify-center">
+          <Image src="/Catz-Logo.svg" alt="Catz" width={500} height={200} className="h-28 w-auto md:h-40 lg:h-52" priority />
+        </div>
 
         <p data-hero className="text-sm tracking-[0.3em] text-foreground/40">
           {"Vibe \u00B7 Dine \u00B7 Unwind"}
@@ -158,7 +156,7 @@ export function Hero() {
       </div>
 
       {/* Bottom gradient edge */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 h-32 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 z-10 h-32 bg-gradient-to-t from-black to-transparent" />
     </section>
   )
 }

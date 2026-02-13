@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { Instagram, Facebook, Music2 } from "lucide-react"
+import Image from "next/image"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -88,8 +89,8 @@ export function Footer() {
         <div ref={contentRef} className="grid gap-12 md:grid-cols-3">
           {/* Brand */}
           <div className="footer-col flex flex-col gap-5">
-            <a href="#" className="gold-shimmer font-serif text-3xl font-bold tracking-[0.15em] transition-opacity duration-300 hover:opacity-80">
-              CATZ
+            <a href="#" className="transition-opacity duration-300 hover:opacity-80">
+              <Image src="/Catz-Logo.svg" alt="Catz" width={120} height={45} className="h-10 w-auto" />
             </a>
             <p className="max-w-xs text-[13px] leading-relaxed text-foreground/40">
               {"Erbil's premier destination for premium dining, signature cocktails, and unforgettable nights."}

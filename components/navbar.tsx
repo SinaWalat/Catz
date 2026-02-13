@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react"
 import { createPortal } from "react-dom"
+import Image from "next/image"
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -78,9 +79,9 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
         <a
           href="#"
-          className="gold-shimmer font-serif text-2xl font-bold tracking-[0.2em] transition-opacity duration-300 hover:opacity-80"
+          className="transition-opacity duration-300 hover:opacity-80"
         >
-          CATZ
+          <Image src="/Catz-Logo.svg" alt="Catz" width={80} height={30} className="h-8 w-auto" priority />
         </a>
 
         <ul className="hidden items-center gap-10 md:flex">
@@ -88,10 +89,8 @@ export function Navbar() {
             <li key={link.href} className="relative">
               <a
                 href={link.href}
-                className={`hover-underline text-[11px] uppercase tracking-[0.25em] transition-colors duration-300 ${activeSection === link.href.replace("#", "")
-                  ? "text-primary"
-                  : "text-foreground/60 hover:text-foreground"
-                  }`}
+                className="hover-underline text-[11px] uppercase tracking-[0.25em] transition-opacity duration-300 hover:opacity-70"
+                style={{ color: activeSection === link.href.replace("#", "") ? '#91624e' : '#91624e' }}
               >
                 {link.label}
               </a>
